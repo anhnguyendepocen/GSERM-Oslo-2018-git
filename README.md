@@ -45,7 +45,7 @@ Two required readings:
 
 •	Hsaio, Cheng. 2003. Analysis of Panel Data. New York: Cambridge University Press.
 
-Additional readings will also be assigned as necessary, all of which will be available on github and/or through JSTOR.
+Additional readings will also be assigned as necessary, all of which will be available on github and/or through JSTOR. A full syllabus will be available shortly.
 
 # Software
 
