@@ -13,24 +13,29 @@ The subject matter of the course is regression models for data that vary both ov
 # Course Outline
 
 Day 1:
-•	Morning: Overview of Panel/TSCS data + One-Way Unit Effects
-•	Afternoon: GLS-ARMA and Dynamic Panel Data Models
+
+- Morning: Overview of Panel/TSCS data + One-Way Unit Effects
+- Afternoon: GLS-ARMA and Dynamic Panel Data Models
 
 Day 2:
-•	Morning: Hierarchical / Multilevel Models for TSCS Data
-•	Afternoon: Models for Binary and Event Count Dependent Variables
 
-Day 3: 
-•	Morning: Generalized Estimating Equations
-•	Afternoon: Introduction to Survival / Event History Data
+- Morning: Hierarchical / Multilevel Models for TSCS Data
+- Afternoon: Models for Binary and Event Count Dependent Variables
 
-Day 4: 
-•	Morning: Parametric and Semiparametric Models for Survival Data
-•	Afternoon: Discrete-Time Models
+Day 3:
+
+- Morning: Generalized Estimating Equations
+- Afternoon: Introduction to Survival / Event History Data
+
+Day 4:
+
+- Morning: Parametric and Semiparametric Models for Survival Data
+- Afternoon: Discrete-Time Models
 
 Day 5:
-•	Morning: Survival Model Extensions
-•	Afternoon: Examination
+
+- Morning: Survival Model Extensions
+- Afternoon: Examination
 
 # Course Materials
 
