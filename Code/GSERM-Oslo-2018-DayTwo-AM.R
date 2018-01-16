@@ -23,6 +23,61 @@ options(scipen = 6) # bias against scientific notation
 options(digits = 2) # show fewer decimal places
 
 ############################################
+# "Robust" illustration:
+
+id<-seq(1,100,1) # 100 observations
+set.seed(7222009)
+x<-rnorm(100) # N(0,1) noise
+y<-1+1*x+rnorm(100)*abs(x)
+library(rms)
+fit<-ols(y~x,x=TRUE,y=TRUE)
+fit
+
+RVCV<-robcov(fit)
+RVCV
+
+bigID<-rep(id,16)
+bigX<-rep(x,16)
+bigY<-rep(y,16)
+bigdata<-as.data.frame(cbind(bigID,bigY,bigX))
+bigOLS<-ols(bigY~bigX,data=bigdata,x=TRUE,y=TRUE)
+bigOLS
+
+BigRVCV<-robcov(bigOLS,bigdata$bigID)
+BigRVCV
+
+# Plot:
+
+xsim=c(-3,-2,-1,0,1,2,3)
+hats100<-predict(fit,xsim,se.fit=TRUE)
+hats1600<-predict(bigOLS,xsim,se.fit=TRUE)
+hatsRVCV<-predict(BigRVCV,xsim,se.fit=TRUE)
+ub100<-hats100$linear.predictors + (1.96*hats100$se.fit)
+lb100<-hats100$linear.predictors - (1.96*hats100$se.fit)
+ub1600<-hats1600$linear.predictors + (1.96*hats1600$se.fit)
+lb1600<-hats1600$linear.predictors - (1.96*hats1600$se.fit)
+ubRVCV<-hatsRVCV$linear.predictors + (1.96*hatsRVCV$se.fit)
+lbRVCV<-hatsRVCV$linear.predictors - (1.96*hatsRVCV$se.fit)
+
+pdf("GSERM-Robustness.pdf",6,5)
+par(mar=c(4,4,2,2))
+plot(x,y,pch=16,xlab="X",ylab="Y")
+abline(lm(y~x),lwd=3)
+lines(xsim,ub100,lty=2,lwd=2)
+lines(xsim,lb100,lty=2,lwd=2)
+lines(xsim,ub1600,lty=2,lwd=2,col="red")
+lines(xsim,lb1600,lty=2,lwd=2,col="red")
+lines(xsim,ubRVCV,lty=3,lwd=2,col="green")
+lines(xsim,lbRVCV,lty=3,lwd=2,col="green")
+legend("topleft",legend=c("Black Dashed Line is N=100",
+                           "Red Dashed Line is Naive N=1600",
+                           "Green Dashed Line is Robust N=1600"),
+       bty="n")
+dev.off()
+
+############################################
+# HLMs
+############################################
 # Data:
 
 temp<-getURL("https://raw.githubusercontent.com/PrisonRodeo/GSERM-Oslo-2018-git/master/Data/HIVDeaths.csv")
